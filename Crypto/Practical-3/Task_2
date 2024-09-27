@@ -1,0 +1,39 @@
+def caesar_cipher(text, shift, mode='encrypt'): 
+    if mode == 'decrypt': 
+        shift = -shift  # Reverse the shift for decryption 
+ 
+    processed_text = "" 
+    for char in text: 
+        if char.isalpha(): 
+            shift_amount = shift % 26 
+            if char.islower(): 
+                start = ord('a') 
+                processed_char = chr(start + (ord(char) - start + 
+shift_amount) % 26) 
+            else: 
+                start = ord('A') 
+                processed_char = chr(start + (ord(char) - start + 
+shift_amount) % 26) 
+            processed_text += processed_char 
+        else: 
+            if mode == 'decrypt': 
+                processed_text += char  # Add space back during decryption 
+            # Skip spaces during encryption 
+ 
+    return processed_text 
+ 
+def brute_force_caesar_cipher(ciphertext): 
+    possible_plaintexts = [] 
+    for shift in range(26): 
+        decrypted_text = caesar_cipher(ciphertext, shift, mode='decrypt') 
+        possible_plaintexts.append((shift, decrypted_text)) 
+    return possible_plaintexts 
+ 
+# User input 
+ciphertext = input("Enter the ciphertext: ") 
+ 
+# Brute force attack 
+all_possible_pairs = brute_force_caesar_cipher(ciphertext) 
+print("Possible plaintexts by trying all shifts:") 
+for shift, plaintext in all_possible_pairs: 
+    print(f"Shift {shift}: {plaintext}")

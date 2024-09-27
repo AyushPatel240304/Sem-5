@@ -1,0 +1,43 @@
+# Monoalphabetic Cipher Program 
+ 
+def generate_fixed_mono_alphabetic_key(): 
+    # Define a fixed key mapping for the alphabet 
+    alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 
+    shuffled_alphabet = 'QWERTYUIOPASDFGHJKLZXCVBNM'  # Example of a fixed key 
+    return dict(zip(alphabet, shuffled_alphabet)) 
+ 
+def mono_alphabetic_cipher(text, key, mode='encrypt'): 
+    if mode == 'decrypt': 
+        key = {v: k for k, v in key.items()}  # Invert the key for decryption 
+     
+    processed_text = "" 
+    for char in text: 
+        if char.isalpha(): 
+            if char.islower(): 
+                processed_text += key[char.upper()].lower() 
+            else: 
+                processed_text += key[char] 
+        else: 
+            processed_text += char 
+    return processed_text 
+ 
+# Use a fixed key instead of randomizing 
+key = generate_fixed_mono_alphabetic_key() 
+print("Mono-alphabetic Cipher Algorithm") 
+# Ask user whether to encrypt or decrypt 
+operation = input("Do you want to (1) Encrypt or (2) Decrypt? Enter 1 or 2: ") 
+ 
+if operation == '1': 
+    # User input for encryption 
+    plaintext = input("Enter the text to encrypt: ") 
+    ciphertext = mono_alphabetic_cipher(plaintext, key, mode='encrypt') 
+    print(f"Key: {key}") 
+    print(f"Encrypted Text: {ciphertext}") 
+ 
+elif operation == '2': 
+    # User input for decryption 
+    ciphertext = input("Enter the text to decrypt: ") 
+    decrypted_text = mono_alphabetic_cipher(ciphertext, key, mode='decrypt') 
+    print(f"Decrypted Text: {decrypted_text}") 
+else: 
+    print("Invalid option selected.")

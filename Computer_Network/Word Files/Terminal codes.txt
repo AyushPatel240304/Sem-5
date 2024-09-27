@@ -1,0 +1,7 @@
+Pr3-config 3rd pd 
+>> write down in router of third 
+exit fully 
+enable
+configure terminal 
+interface GigabitEthernet0/0/1
+ip helper-address ip_of_dhcp_server
