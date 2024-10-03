@@ -5,3 +5,26 @@ enable
 configure terminal 
 interface GigabitEthernet0/0/1
 ip helper-address ip_of_dhcp_server
+
+
+router# > do show run 
+
+
+
+--------------PR-4 ---------------------
+
+Router>enable
+Router#config terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#enable secret krish
+Router(config)#userna
+Router(config)#username collector passwor
+Router(config)#username collector password 12345
+Router(config)#username crew password 12345
+Router(config)#username ayush password 12345
+Router(config)#line vty 0 2
+Router(config-line)#pass
+Router(config-line)#password ayush
+Router(config-line)#login local
+Router(config-line)#exit
+Router(config)#do show run
