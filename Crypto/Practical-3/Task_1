@@ -27,4 +27,4 @@ mode = input("Enter 'encrypt' to encrypt or 'decrypt' to decrypt: ")
  
 # Process 
 result = caesar_cipher(text, shift, mode) 
-print(f"Result: {result}") 
+print(f"Result: {result}")
